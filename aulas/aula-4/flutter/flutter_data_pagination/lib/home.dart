@@ -6,8 +6,27 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List items = [
+    'Element 1',
+    'Element 2',
+    'Element 3',
+    'Element 4',
+    'Element 5',
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              return ListTile(title: Text(items[index]));
+            },
+          ),
+        )
+      ],
+    );
   }
 }
