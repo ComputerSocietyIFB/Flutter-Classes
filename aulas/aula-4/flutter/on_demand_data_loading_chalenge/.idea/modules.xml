@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/on_demand_data_loading_chalenge.iml" filepath="$PROJECT_DIR$/on_demand_data_loading_chalenge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/on_demand_data_loading_chalenge_android.iml" filepath="$PROJECT_DIR$/android/on_demand_data_loading_chalenge_android.iml" />
+    </modules>
+  </component>
+</project>

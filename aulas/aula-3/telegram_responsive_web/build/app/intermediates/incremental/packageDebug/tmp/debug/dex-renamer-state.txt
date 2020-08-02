@@ -1,0 +1,4 @@
+#Tue Jun 16 21:00:55 BRT 2020
+base.0=/home/thiago/Documentos/work/cs/aulas/aula-3/telegram_responsive_web/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
