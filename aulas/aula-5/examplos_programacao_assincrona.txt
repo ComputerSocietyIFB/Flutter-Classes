@@ -79,3 +79,35 @@ String doSyncTask(String description) {
   return '$description';
 }
 
+
+EXEMPLO DA SOMA
+//#######################################################################################
+//Fazendo todo mundo esperar
+void main() async{
+  int value = await getDouble(2).then((value) => value * value); //Thread principal
+  
+  print('Result: $value');
+  
+  print('Acabou');
+
+}
+
+Future<int> getDouble(int targetValue) {
+  return Future.delayed(Duration(milliseconds: 2500)).then((_) => targetValue * targetValue);
+}
+
+
+
+//#######################################################################################
+//Executando cada um no seu tempo
+void main() {
+  getDouble(2).then((value) => value * value).then((value) => print('Result: $value')); //Thread separada
+  
+  print('Acabou');
+
+}
+
+Future<int> getDouble(int targetValue) {
+  return Future.delayed(Duration(milliseconds: 2500)).then((_) => targetValue * targetValue);
+}
+
