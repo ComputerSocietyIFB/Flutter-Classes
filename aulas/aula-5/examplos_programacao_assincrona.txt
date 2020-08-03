@@ -1,0 +1,81 @@
+//Preciso que cada atividade seja executada na ordem
+void main() async {
+  print(await doTask('Tarefa 1', 3000)); //Thread principal
+  
+  print(await doTask('Tarefa 2', 1500)); //Thread principal
+  
+  print(await doTask('Tarefa 3', 850)); //Thread principal
+
+  print(doSyncTask('Tarefa síncrona 4')); //Thread principal
+}
+
+Future<String> doTask(String description, [int milliseconds = 2000]) {
+  return Future.delayed(Duration(milliseconds: milliseconds)).then((_) => '$description (${milliseconds}s)');
+}
+
+String doSyncTask(String description) {
+  return '$description';
+}
+
+//#######################################################################################
+//Definindo prioridades para as tarefas 1
+void main() async {
+  await doTask('Tarefa 1', 3000).then((value) => print('$value'));
+  
+  doTask('Tarefa 2', 1500).then((value) => print('Separado: $value')); //Thread separada
+  
+  doTask('Tarefa 3', 850).then((value) => print('Separado: $value')); //Thread separada
+
+  print(doSyncTask('Tarefa síncrona 4'));
+}
+
+Future<String> doTask(String description, [int milliseconds = 2000]) {
+  return Future.delayed(Duration(milliseconds: milliseconds)).then((_) => '$description (${milliseconds}s)');
+}
+
+
+String doSyncTask(String description) {
+  return '$description';
+}
+
+//#######################################################################################
+//Definindo prioridades para as tarefas 2
+void main() async {
+  await doTask('Tarefa 1', 1500).then((value) => print('$value'));
+  
+  doTask('Tarefa 2', 2000).then((value) => print('Separado: $value')); //Thread separada
+  
+  await doTask('Tarefa 3', 850).then((value) => print('Separado: $value'));
+
+  print(doSyncTask('Tarefa síncrona 4'));
+}
+
+Future<String> doTask(String description, [int milliseconds = 2000]) {
+  return Future.delayed(Duration(milliseconds: milliseconds)).then((_) => '$description (${milliseconds}s)');
+}
+
+
+String doSyncTask(String description) {
+  return '$description';
+}
+
+//#######################################################################################
+//A ordem não importa
+void main() {
+  doTask('Tarefa 1', 1500).then((value) => print('$value')); //Thread separada
+  
+  doTask('Tarefa 2', 2000).then((value) => print('Separado: $value')); //Thread separada
+  
+  doTask('Tarefa 3', 850).then((value) => print('Separado: $value')); //Thread separada
+
+  print(doSyncTask('Tarefa síncrona 4'));
+}
+
+Future<String> doTask(String description, [int milliseconds = 2000]) {
+  return Future.delayed(Duration(milliseconds: milliseconds)).then((_) => '$description (${milliseconds}s)');
+}
+
+String doSyncTask(String description) {
+  return '$description';
+}
+
